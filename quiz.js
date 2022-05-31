@@ -55,7 +55,7 @@ const previousQuestion = questions.length - 1;
 
 // current question starts from 0
 let currentQuestion = 0;
-
+let count = 0;
 
 //asks a question
 //uses currentQuestion starting from 0
