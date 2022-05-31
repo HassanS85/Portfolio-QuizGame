@@ -61,18 +61,30 @@ let currentQuestion = 0;
 //uses currentQuestion starting from 0
 const askQuestion = () => {
 
-    let  = questions[currentQuestion];
+    let anyQuestion = questions[currentQuestion];
 
    
 
-    question.innerHTML = `<p>${q.question}</p>`;
+    question.innerHTML = `<p>${anyQuestion.question}</p>`;
 
-    questionImg.innerHTML = `<img src="${q.imgSrc}">`;
+    questionImg.innerHTML = `<img src="${anyQuestion.imgSrc}">`;
 
     choiceA.innerHTML = q.choiceA;
 
     choiceB.innerHTML = q.choiceB;
 
     choiceC.innerHTML = q.choiceC;
+
+}
+
+// to measure the progress
+
+function quizProgress(){
+
+    for(let Index = 0; Index <= lastQuestion; Index++){
+
+        progressBar.innerHTML += `<div class="quizProgress" id="Index"></div>`;
+
+    }
 
 }
