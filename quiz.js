@@ -69,11 +69,9 @@ const askQuestion = () => {
 
     questionImg.innerHTML = `<img src="${anyQuestion.imgSrc}">`;
 
-    choiceA.innerHTML = q.choiceA;
-
-    choiceB.innerHTML = q.choiceB;
-
-    choiceC.innerHTML = q.choiceC;
+    choiceA.innerHTML = anyQuestion.choiceA;
+    choiceB.innerHTML = anyQuestion.choiceB;
+    choiceC.innerHTML = anyQuestion.choiceC;
 
 }
 
@@ -81,10 +79,13 @@ const askQuestion = () => {
 
 function quizProgress(){
 
-    for(let Index = 0; Index <= lastQuestion; Index++){
+    for(let Index = 0; Index <= previousQuestion; Index++){
 
         progressBar.innerHTML += `<div class="quizProgress" id="Index"></div>`;
 
     }
 
 }
+
+start.addEventListener("click",startQuiz);
+
