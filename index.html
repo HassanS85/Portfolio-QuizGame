@@ -1,59 +1,45 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
 
     <title>Quiz</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <div id="container">
+      <div id="start">Start Quiz!</div>
 
-        <div id="start">Start Quiz!</div>
+      <div id="quiz" style="display: none">
+        <div id="question"></div>
 
-        <div id="quiz" style="display: none">
+        <div id="qImg"></div>
 
-            <div id="question"></div>
+        <div id="choices">
+          <div class="choice" id="A">Choice A</div>
 
-            <div id="qImg"></div>
+          <div class="choice" id="B">Choice B</div>
 
-            <div id="choices">
-
-                <div class="choice" id="A"></div>
-
-                <div class="choice" id="B"></div>
-
-                <div class="choice" id="C"></div>
-
-            </div>
-
-            <div id="timer">
-
-                <div id="counter"></div>
-
-                <div id="btimeGauge"></div>
-
-                <div id="timeGauge"></div>
-
-            </div>
-
-            <div id="progress"></div>
-
+          <div class="choice" id="C">Choice C</div>
         </div>
 
-        <div id="scoreContainer" style="display: none"></div>
+        <div id="timer">
+          <div id="counter"></div>
 
+          <div id="countdownTimer"></div>
+
+          <div id="countdownTimer"></div>
+        </div>
+
+        <div id="progressBar"></div>
+      </div>
+
+      <div id="scoreContainer"></div>
     </div>
 
     <script src="quiz.js"></script>
-
-</body>
-
+  </body>
 </html>
