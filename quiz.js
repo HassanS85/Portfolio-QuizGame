@@ -1,3 +1,6 @@
+import { array } from "./data.js";
+console.log(array);
+
 // select all elements
 
 const start = document.getElementById("start");
@@ -6,7 +9,7 @@ const quiz = document.getElementById("quiz");
 
 const question = document.getElementById("question");
 
-const questionImg = document.getElementById("qImg");
+const questionImg = document.getElementById("questionImg");
 
 const choiceA = document.getElementById("A");
 
@@ -16,12 +19,13 @@ const choiceC = document.getElementById("C");
 
 const counter = document.getElementById("counter");
 
-const timer = document.getElementById("timeGauge");
+const timer = document.getElementById("timer");
 
-const progressBar = document.getElementById("progress");
+const progressBar = document.getElementById("progressBar");
 
 const scoreDiv = document.getElementById("scoreContainer");
 
+//examples questions in an array
 let questions = [
     {
         question : "What does HTML stand for?",
@@ -46,13 +50,15 @@ let questions = [
         correct: "C"
     }
 ]
+//previous question goes to the back -1
+const previousQuestion = questions.length - 1;
 
-const previosuQuestion = questions.length - 1;
-
+// current question starts from 0
 let currentQuestion = 0;
 
 
-
+//asks a question
+//uses currentQuestion starting from 0
 const askQuestion = () => {
 
     let  = questions[currentQuestion];
@@ -61,7 +67,7 @@ const askQuestion = () => {
 
     question.innerHTML = `<p>${q.question}</p>`;
 
-    questionImg.innerHTML = "<img src="+ q.imgSrc +">";
+    questionImg.innerHTML = `<img src="${q.imgSrc}">`;
 
     choiceA.innerHTML = q.choiceA;
 
