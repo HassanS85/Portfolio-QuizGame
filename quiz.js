@@ -58,9 +58,10 @@ let currentQuestion = 0;
 let count = 0;
 
 //creating the timer for the game
-const questionTime = 10; // 10s
-const timerWidth = 150; // 150px
-const timerUnit = gaugeWidth / questionTime;
+const questionTime = 20; // 20s
+const timerWidth = 200; // 200px
+const timerUnit = timerWidth / questionTime;
+let countdown = 0;
 let score = 0;
 
 
@@ -96,7 +97,6 @@ const startQuiz = () => {
     quiz.style.display = "block";
     askQuestion();
     start.style.display = "none";
-
     questionProgress();
     questionCounter();
     timesInterval = setInterval(questionCounter,1000); // 1000ms = 1s
@@ -105,8 +105,8 @@ const startQuiz = () => {
 
 // the progress so far.
 const questionProgress = () => {
-    for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
-        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+    for(let questionIndex = 0; questionIndex <= previousQuestion; questionIndex++){
+        progressBar.innerHTML += `<div class="prog" id="questionIndex"></div>`;
     }
 }
 
