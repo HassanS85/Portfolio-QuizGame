@@ -1,6 +1,6 @@
 body{
-    font-size: 20px;
-    font-family: monospace;
+    font-size: 30px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 #container{
@@ -15,7 +15,6 @@ body{
 #start{
     font-size: 1.5em;
     font-weight: bolder;
-    word-break: break-all;
     width:100px;
     height:150px;
     border : 2px solid lightgrey;
@@ -27,7 +26,7 @@ body{
     color : lightgrey;
 }
 #start:hover{
-    border: 3px solid lightseagreen;
-    color : lightseagreen;
+    border: 3px solid rgb(40, 205, 197);
+    color : rgb(44, 39, 189);
 }
 
