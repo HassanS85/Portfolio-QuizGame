@@ -122,7 +122,7 @@ const questionCounter = () => {
     }else{
         count = 0;
         // change progress color if the answer is incorrect
-        //incorrectAnswer();
+        incorrectAnswer();
         if(currentQuestion < previousQuestion){
             currentQuestion++;
             askQuestion();
@@ -133,8 +133,11 @@ const questionCounter = () => {
         }
     }
 }
+//function to see if the answer is correct or not
 
+//function to change the colour of the options(A,B,C) if the incorrect answer is given
 
+//function to change the colour of the options(A,B,C) if the correct answer is given
 const checkAnswer = (answer) => {
     if( answer == questions[currentQuestion].correct){
         // answer is correct
@@ -152,9 +155,19 @@ const checkAnswer = (answer) => {
         askQuestion();
     }else{
         // end the quiz and show the score
-        clearInterval(TIMER);
+        clearInterval(timer);
         scoreRender();
     }
+}
+
+//  if the answer is correct
+const correctAnswer = () => {
+    document.getElementById(currentQuestion).style.backgroundColor = "#green";
+}
+
+//if the answer is wrong
+const incorrectAnswer = () => {
+    document.getElementById(currentQuestion).style.backgroundColor = "#red";
 }
 
 
@@ -163,21 +176,8 @@ const checkAnswer = (answer) => {
 
 
 
-// show the score of the quiz so far
 
 
-//function to see if the answer is correct or not
-
-//function to change the colour of the options(A,B,C) if the incorrect answer is given
-
-//function to change the colour of the options(A,B,C) if the correct answer is given
 
 
-//function to show the score currently in percentage.
-
-
-//calculate the amount answered correctly/incorrectly.
-//will need to use (Math.round here.)
-
-// 
 
