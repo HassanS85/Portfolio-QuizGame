@@ -69,13 +69,8 @@ let score = 0;
 const askQuestion = () => {
 
     let anyQuestion = questions[currentQuestion];
-
-   
-
     question.innerHTML = `<p>${anyQuestion.question}</p>`;
-
     questionImg.innerHTML = `<img src="${anyQuestion.imgSrc}">`;
-
     choiceA.innerHTML = anyQuestion.choiceA;
     choiceB.innerHTML = anyQuestion.choiceB;
     choiceC.innerHTML = anyQuestion.choiceC;
@@ -84,7 +79,7 @@ const askQuestion = () => {
 
 // to measure the progress
 
-function quizProgress(){
+const quizProgress = () => {
 
     for(let Index = 0; Index <= previousQuestion; Index++){
 
@@ -97,18 +92,19 @@ function quizProgress(){
 start.addEventListener("click",startQuiz);
 
 // start quiz
-function startQuiz(){
-    
+const startQuiz = () => {
+    quiz.style.display = "block";
     askQuestion();
-    
-    qusetionProgress();
+    start.style.display = "none";
+
+    questionProgress();
     questionCounter();
     timesInterval = setInterval(questionCounter,1000); // 1000ms = 1s
 
 }
 
 // the progress so far.
-function renderProgress(){
+const questionProgress = () => {
     for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
     }
