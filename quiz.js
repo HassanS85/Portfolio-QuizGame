@@ -90,27 +90,77 @@ const quizProgress = () => {
 
 }
 
-start.addEventListener("click",startQuiz);
-
-// start quiz
 const startQuiz = () => {
-    quiz.style.display = "block";
+    quiz.style.display = "none";
     askQuestion();
-    start.style.display = "none";
+    start.style.display = "block";
     questionProgress();
     questionCounter();
-    timesInterval = setInterval(questionCounter,1000); // 1000ms = 1s
-
+    timerInterval = setInterval(questionCounter,1000); // 1000ms = 1s
+    console.log()
 }
+
+
+start.addEventListener("click", startQuiz);
+
+// start quiz
+
 
 // the progress so far.
 const questionProgress = () => {
     for(let questionIndex = 0; questionIndex <= previousQuestion; questionIndex++){
         progressBar.innerHTML += `<div class="prog" id="questionIndex"></div>`;
-    }
+    }console.log()
 }
 
 // counter function to show the progress
+const questionCounter = () => {
+    if(count <= questionTime){
+        counter.innerHTML = count;
+        timer.style.width = count * timerUnit + "px";
+        count++
+    }else{
+        count = 0;
+        // change progress color if the answer is incorrect
+        //incorrectAnswer();
+        if(currentQuestion < previousQuestion){
+            currentQuestion++;
+            askQuestion();
+        }else{
+            // end the quiz and show the score
+            clearInterval(timerInterval);
+            userScore();
+        }
+    }
+}
+
+
+const checkAnswer = (answer) => {
+    if( answer == questions[currentQuestion].correct){
+        // answer is correct
+        score++;
+        // change progress color to green
+        correctAnswer();
+    }else{
+        // answer is wrong
+        // change progress color to red
+        incorrectAnswer();
+    }
+    count = 0;
+    if(currentQuestion < previousQuestion){
+        currentQuestion++;
+        askQuestion();
+    }else{
+        // end the quiz and show the score
+        clearInterval(TIMER);
+        scoreRender();
+    }
+}
+
+
+
+
+
 
 
 // show the score of the quiz so far
