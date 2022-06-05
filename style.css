@@ -152,4 +152,10 @@ body {
   font-size: 1.5em;
   font-weight: bold;
   text-align: center;
+}
+
+@media screen and (min-width: 501px) {
+  #quiz-container {
+    background-color: aquamarine;
+  }
 }/*# sourceMappingURL=style.css.map */
