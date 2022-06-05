@@ -8,7 +8,7 @@ body {
 }
 
 #quiz-container {
-  margin: 20px auto;
+  margin: 30px auto;
   background-color: rgb(185, 240, 243);
   height: 500px;
   width: 900px;
@@ -137,14 +137,12 @@ body {
   position: relative;
   display: none;
 }
-
-#scoreContainer img {
+#scoreContainer__#scoreContainer img {
   position: absolute;
   top: 100px;
   left: 325px;
 }
-
-#scoreContainer p {
+#scoreContainer__#scoreContainer img__#scoreContainer p {
   position: absolute;
   display: block;
   width: 59px;
