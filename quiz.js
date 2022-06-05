@@ -1,143 +1,167 @@
-import { array } from "./data.js";
-console.log(array);
 
 // select all elements
-
-const start = document.getElementById("start");
-
-const quiz = document.getElementById("quiz");
-
-const question = document.getElementById("question");
-
-const questionImg = document.getElementById("questionImg");
-
+const start = document.getElementById("quiz__start");
+const quiz = document.getElementById("quiz__main");
+const question = document.getElementById("quiz__question");
+const qImg = document.getElementById("quiz__Image");
 const choiceA = document.getElementById("A");
-
 const choiceB = document.getElementById("B");
-
 const choiceC = document.getElementById("C");
-
-const counter = document.getElementById("counter");
-
-const timer = document.getElementById("timer");
-
-const progressBar = document.getElementById("progressBar");
-
+const counter = document.getElementById("quiz__counter");
+const timeGauge = document.getElementById("foregroundTimeGauge");
+const progress = document.getElementById("progressBar");
 const scoreDiv = document.getElementById("scoreContainer");
 
-//examples questions in an array
+// create our questions
 let questions = [
     {
         question : "What does HTML stand for?",
-        imgSrc: ".png",
-        choiceA: "Correct",
-        choiceB: "Incorrect",
-        choiceC: "Incorrect",
-        correct: "A"
-    }, {
+        imgSrc : "./images/html.png",
+        choiceA : "Hyper Text Markup Language",
+        choiceB : "Hyperlinks and Text Markup Language",
+        choiceC : "Home Tool Markup Language",
+        correct : "A"
+    },{
         question : "What does CSS stand for?",
-        imgSrc: ".png",
-        choiceA: "Incorrect",
-        choiceB: "Correct",
-        choiceC: "Incorrect",
-        correct: "B"
+        imgSrc : "./images/css.png",
+        choiceA : "Colourful Style Sheets",
+        choiceB : "Cascading Style Sheets",
+        choiceC : "Computer Style Sheets",
+        correct : "B"
+    },{
+        question : "Which property is used to change the font of an element?",
+        imgSrc : "./images/css.png",
+        choiceA : "font-family",
+        choiceB : "font-weight",
+        choiceC : "font-style",
+        correct : "A"
     }, {
-        question : "What does JS stand for?",
-        imgSrc: ".png",
-        choiceA: "Incorrect",
-        choiceB: "Incorrect",
-        choiceC: "Correct",
-        correct: "C"
+        question : "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",
+        imgSrc : "./images/html.png",
+        choiceA : "title",
+        choiceB : "src",
+        choiceC : "alt",
+        correct : "C"
+    }, {
+        question : "Which SQL statement is used to return only different values?",
+        imgSrc : "./images/sql.png",
+        choiceA : "SELECT UNIQUE",
+        choiceB : "SELECT DISTINCT",
+        choiceC : "SELECT DIFFERENT",
+        correct : "B"
+    }, {
+        question : "How do you select elements with class name 'test'?",
+        imgSrc : "./images/css.png",
+        choiceA : ".test",
+        choiceB : "#test",
+        choiceC : "test",
+        correct : "A"
+    }, {
+        question : "Which operator is used to assign a value to a variable?",
+        imgSrc : "./images/js.png",
+        choiceA : "*",
+        choiceB : "X",
+        choiceC : "=",
+        correct : "C"
+    }, {
+        question : "How do you select an element with id 'demo'?",
+        imgSrc : "./images/css.png",
+        choiceA : ".demo",
+        choiceB : "#demo",
+        choiceC : "demo",
+        correct : "B"
+    }, {
+        question : "What does SQL stand for?",
+        imgSrc : "./images/sql.png",
+        choiceA : "Structured Query Language",
+        choiceB : "Strong Question Language",
+        choiceC : "Structured Question Language",
+        correct : "A"
+    }, {
+        question : "In Git, a branch is:",
+        imgSrc : "./images/github.png",
+        choiceA : "Nothing",
+        choiceB : "a separate version of the main repository",
+        choiceC : "a part of Git config",
+        correct : "A"
+    }, {
+        question : "Which operator is used to multiply numbers?",
+        imgSrc : "./images/js.png",
+        choiceA : "#",
+        choiceB : "X",
+        choiceC : "*",
+        correct : "C"
     }
-]
-//previous question goes to the back -1
-const previousQuestion = questions.length - 1;
+];
 
-// current question starts from 0
+// create some variables
+
+const previousQuestion = questions.length - 1;
 let currentQuestion = 0;
 let count = 0;
-
-//creating the timer for the game
 const questionTime = 20; // 20s
-const timerWidth = 200; // 200px
-const timerUnit = timerWidth / questionTime;
-let countdown = 0;
+const timeGaugeWidth = 200; // 200px
+const timeGaugeUnit = timeGaugeWidth / questionTime;
 let score = 0;
 
-
-//asks a question
-//uses currentQuestion starting from 0
+// render a question
 const askQuestion = () => {
-
-    let anyQuestion = questions[currentQuestion];
-    question.innerHTML = `<p>${anyQuestion.question}</p>`;
-    questionImg.innerHTML = `<img src="${anyQuestion.imgSrc}">`;
-    choiceA.innerHTML = anyQuestion.choiceA;
-    choiceB.innerHTML = anyQuestion.choiceB;
-    choiceC.innerHTML = anyQuestion.choiceC;
-
+    let q = questions[currentQuestion];
+    
+    question.innerHTML = `<p>${q.question}</p>`;
+    qImg.innerHTML = `<img src="${q.imgSrc}">`;
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
 }
 
-// to measure the progress
-
-const quizProgress = () => {
-
-    for(let Index = 0; Index <= previousQuestion; Index++){
-
-        progressBar.innerHTML += `<div class="quizProgress" id="Index"></div>`;
-
-    }
-
-}
-
-const startQuiz = () => {
-    quiz.style.display = "none";
-    askQuestion();
-    start.style.display = "block";
-    questionProgress();
-    questionCounter();
-    timerInterval = setInterval(questionCounter,1000); // 1000ms = 1s
-    console.log()
-}
-
-
-start.addEventListener("click", startQuiz);
 
 // start quiz
+const startQuiz = () => {
+    start.style.display = "none";
+    askQuestion();
+    quiz.style.display = "block";
+    questionProgress();
+    questionCounter();
+    timingBelt = setInterval(questionCounter,1000); // 1000ms = 1s
+}
+start.addEventListener("click",startQuiz);
 
 
-// the progress so far.
+
+
+
+// render progress
 const questionProgress = () => {
-    for(let questionIndex = 0; questionIndex <= previousQuestion; questionIndex++){
-        progressBar.innerHTML += `<div class="prog" id="questionIndex"></div>`;
-    }console.log()
+    for(let qIndex = 0; qIndex <= previousQuestion; qIndex++){
+        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+    }
 }
 
-// counter function to show the progress
+// counter render
+
 const questionCounter = () => {
     if(count <= questionTime){
         counter.innerHTML = count;
-        timer.style.width = count * timerUnit + "px";
+        timeGauge.style.width = count * timeGaugeUnit + "px";
         count++
     }else{
         count = 0;
-        // change progress color if the answer is incorrect
+        // change progress color to red
         incorrectAnswer();
         if(currentQuestion < previousQuestion){
             currentQuestion++;
             askQuestion();
         }else{
             // end the quiz and show the score
-            clearInterval(timerInterval);
+            clearInterval(timingBelt);
             userScore();
         }
     }
 }
-//function to see if the answer is correct or not
 
-//function to change the colour of the options(A,B,C) if the incorrect answer is given
+// checkAnwer
 
-//function to change the colour of the options(A,B,C) if the correct answer is given
 const checkAnswer = (answer) => {
     if( answer == questions[currentQuestion].correct){
         // answer is correct
@@ -155,19 +179,44 @@ const checkAnswer = (answer) => {
         askQuestion();
     }else{
         // end the quiz and show the score
-        clearInterval(timer);
-        scoreRender();
+        clearInterval(timingBelt);
+        userScore();
     }
 }
 
-//  if the answer is correct
+
+// answer is correct
 const correctAnswer = () => {
-    document.getElementById(currentQuestion).style.backgroundColor = "#green";
+    document.getElementById(currentQuestion).style.backgroundColor = "#0f0";
 }
 
-//if the answer is wrong
+// answer is Wrong
 const incorrectAnswer = () => {
-    document.getElementById(currentQuestion).style.backgroundColor = "#red";
+    document.getElementById(currentQuestion).style.backgroundColor = "#f00";
+}
+
+choiceA.addEventListener("click",checkAnswer);
+choiceB.addEventListener("click",checkAnswer);
+choiceC.addEventListener("click",checkAnswer);
+
+
+
+// score render
+const userScore =() => {
+    scoreDiv.style.display = "block";
+    
+    // calculate the amount of question percent answered by the user
+    const scorePerCent = Math.round(100 * score/questions.length);
+    
+    // choose the image based on the scorePerCent
+    let img = (scorePerCent >= 80) ? "./images/5.png" :
+              (scorePerCent >= 60) ? "./images/5.png" :
+              (scorePerCent >= 40) ? "./images/5.png" :
+              (scorePerCent >= 20) ? "./images/5.png" :
+              "./images/1.png";
+    
+    scoreDiv.innerHTML = `<img src="${img}">`;
+    scoreDiv.innerHTML += `<p>${scorePerCent}%</p>`;
 }
 
 

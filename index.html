@@ -5,41 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" />
-    <title>Quiz Game</title>
+    <title>Portfolio-Quiz</title>
     
   </head>
-
-  <body>
-    <div id="container">
-      <div id="start">Start Quiz!</div>
-
-      <div id="quiz">
-        <div id="question"></div>
-
-        <div id="questionImg"></div>
-
-        <div id="choices">
-          <div class="choice" id="A">Choice A</div>
-
-          <div class="choice" id="B">Choice B</div>
-
-          <div class="choice" id="C">Choice C</div>
+    <body>
+        <div id="quiz-container">
+            <div id="quiz__start">Start Quiz!</div>
+            <div id="quiz__main" style="display: none">
+                <div id="quiz__question"></div>
+                <div id="quiz__Image"></div>
+                <div id="quiz__choices">
+                    <div class="quiz__Choice" id="A"></div>
+                    <div class="quiz__Choice" id="B"></div>
+                    <div class="quiz__Choice" id="C"></div>
+                </div>
+                <div id="quiz__timer">
+                    <div id="quiz__counter"></div>
+                    <div id="backgroundTimeGauge"></div>
+                    <div id="foregroundTimeGauge"></div>
+                </div>
+                <div id="progressBar"></div>
+            </div>
+            <div id="scoreContainer" style="display: none"></div>
         </div>
-
-        <div id="timer">
-          <div id="counter"></div>
-
-          <div id="backgroundcountdownTimer"></div>
-
-          <div id="countdownTimer"></div>
-        </div>
-
-        <div id="progressBar"></div>
-      </div>
-
-      <div id="scoreContainer"></div>
-    </div>
-
-    <script type="module" src="./quiz.js"></script>
-  </body>
+        <script src="quiz.js"></script>
+    </body>
 </html>
