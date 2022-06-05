@@ -1,6 +1,5 @@
 
-
-import { array } from "data.js";
+//import { array } from "data.js";
 
 
 // select all elements
@@ -87,7 +86,7 @@ let questions = [
         choiceA : "Nothing",
         choiceB : "a separate version of the main repository",
         choiceC : "a part of Git config",
-        correct : "A"
+        correct : "B"
     }, {
         question : "Which operator is used to multiply numbers?",
         imgSrc : "./images/js.png",
@@ -167,7 +166,7 @@ const questionCounter = () => {
 // checkAnswer
 
 const checkAnswer = (answer) => {
-    if( answer == questions[currentQuestion].correct){
+    if( answer === questions[currentQuestion].correct){
         // answer is correct
         score++;
         // change progress color to green
