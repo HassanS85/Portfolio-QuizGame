@@ -3,7 +3,7 @@ body {
   font-family: monospace;
 }
 
-#quiz {
+#quiz__main {
   display: none;
 }
 

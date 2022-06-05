@@ -160,7 +160,7 @@ const questionCounter = () => {
     }
 }
 
-// checkAnwer
+// checkAnswer
 
 const checkAnswer = (answer) => {
     if( answer == questions[currentQuestion].correct){
