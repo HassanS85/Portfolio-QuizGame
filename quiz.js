@@ -1,4 +1,8 @@
 
+
+import { array } from "data.js";
+
+
 // select all elements
 const start = document.getElementById("quiz__start");
 const quiz = document.getElementById("quiz__main");
