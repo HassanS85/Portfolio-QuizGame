@@ -216,7 +216,7 @@ const userScore =() => {
               "./images/1.png";
     
     scoreDiv.innerHTML = `<img src="${img}">`;
-    scoreDiv.innerHTML += `<p>${scorePerCent}%</p>`;
+    scoreDiv.innerHTML += `<p>You scored a total of ${scorePerCent}%!</p>`;
 }
 
 
