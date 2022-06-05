@@ -21,12 +21,12 @@ body{
     font-weight: bolder;
     width:300px;
     height:350px;
-    border : 2px solid rgb(0, 0, 0);
+    border : 2px dotted rgb(0, 0, 0);
     text-align: center;
     cursor: pointer;
     position: absolute;
     left:300px;
-    top:50px;
+    top:60px;
     color : rgb(175, 34, 34);
 }
 #start:hover{
@@ -34,8 +34,11 @@ body{
     color : lightseagreen;
 }
 
-
-
+#quiz__Image img{
+    width : 200px;
+    height : 200px;
+    border-top-left-radius: 5px;
+}
 
 #quiz__question{
     width:500px;

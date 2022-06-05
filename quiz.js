@@ -106,13 +106,13 @@ let score = 0;
 
 // render a question
 const askQuestion = () => {
-    let q = questions[currentQuestion];
+    let askedQ = questions[currentQuestion];
     
-    question.innerHTML = `<p>${q.question}</p>`;
-    qImg.innerHTML = `<img src="${q.imgSrc}">`;
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
+    question.innerHTML = `<p>${askedQ.question}</p>`;
+    qImg.innerHTML = `<img src="${askedQ.imgSrc}">`;
+    choiceA.innerHTML = askedQ.choiceA;
+    choiceB.innerHTML = askedQ.choiceB;
+    choiceC.innerHTML = askedQ.choiceC;
 }
 
 
