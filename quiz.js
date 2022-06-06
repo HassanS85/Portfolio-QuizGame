@@ -2,7 +2,7 @@
 //import { array } from "data.js";
 
 
-// select all elements
+// select all elements here: 
 const start = document.getElementById("quiz__start");
 const quiz = document.getElementById("quiz__main");
 const question = document.getElementById("quiz__question");
@@ -15,7 +15,7 @@ const timeGauge = document.getElementById("foregroundTimeGauge");
 const progress = document.getElementById("progressBar");
 const scoreDiv = document.getElementById("scoreContainer");
 
-// create our questions
+// questions that i will be using in the quiz later
 let questions = [
     {
         question : "What does HTML stand for?",
@@ -97,7 +97,8 @@ let questions = [
     }
 ];
 
-// create some variables
+// create some variables for the quiz.
+//need to figure out the time variables fo ruse in the timer on quiz
 
 const previousQuestion = questions.length - 1;
 let currentQuestion = 0;
@@ -107,7 +108,8 @@ const timeGaugeWidth = 200; // 200px
 const timeGaugeUnit = timeGaugeWidth / questionTime;
 let score = 0;
 
-// render a question
+// ask a question - with the choices being offerd to user as well. 
+//making sure its the curent question.
 const askQuestion = () => {
     let askedQ = questions[currentQuestion];
     
@@ -119,7 +121,7 @@ const askQuestion = () => {
 }
 
 
-// start quiz
+// start quiz here
 const startQuiz = () => {
     start.style.display = "none";
     askQuestion();
@@ -134,7 +136,7 @@ start.addEventListener("click",startQuiz);
 
 
 
-// render progress
+// question progress
 const questionProgress = () => {
     for(let qIndex = 0; qIndex <= previousQuestion; qIndex++){
         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
