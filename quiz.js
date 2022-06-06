@@ -101,9 +101,12 @@ let questions = [
 //need to figure out the time variables fo ruse in the timer on quiz
 
 const previousQuestion = questions.length - 1;
+//index of the current question
 let currentQuestion = 0;
 let count = 0;
+//sets a timer for the quiz here
 const questionTime = 20; // 20s
+
 const timeGaugeWidth = 200; // 200px
 const timeGaugeUnit = timeGaugeWidth / questionTime;
 let score = 0;
@@ -122,6 +125,12 @@ const askQuestion = () => {
 
 
 // start quiz here
+// selecting start element, with event listener click
+// hides the div initially.
+// set the counter to 0
+// then set timer so that it can start the count.
+// then the question is asked
+//display the quiz div
 const startQuiz = () => {
     start.style.display = "none";
     askQuestion();
@@ -133,18 +142,19 @@ const startQuiz = () => {
 start.addEventListener("click",startQuiz);
 
 
-
-
-
-// question progress
+// question progress - this is displaying the progress of the quiz so far
+//the new class "prog" shows the progress via the circles on the quiz
+//the index will begin at 0 on the quiz.
 const questionProgress = () => {
     for(let qIndex = 0; qIndex <= previousQuestion; qIndex++){
         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
     }
 }
 
-// counter render
-
+// if count is less than or equal to questionTime
+//then we will change the counter.innerHTML to count
+//timegauge will multiply as each second moves on.
+//times out if the user does not answer in enough time.
 const questionCounter = () => {
     if(count <= questionTime){
         counter.innerHTML = count;
@@ -166,7 +176,11 @@ const questionCounter = () => {
 }
 
 // checkAnswer
-
+//we can know if this is the correct answer as its listening to the answer.target.id
+// which here is "correct" as per the array object.
+//updates progress bar accordingly.
+//if number of questions is exceeded, then the count goes back to 0,
+//move to next question.
 const checkAnswer = (answer) => {
     if (answer.target.id === questions[currentQuestion].correct){    
         // answer is correct
@@ -190,30 +204,34 @@ const checkAnswer = (answer) => {
 }
 
 
-// answer is correct
+// answer is correct - if user answer is correct then the circle color
+// changes to green "#0f0"
 const correctAnswer = () => {
     document.getElementById(currentQuestion).style.backgroundColor = "#0f0";
 }
 
-// answer is Wrong
+// answer is Wrong // answer is correct - if user answer is correct then the circle color
+// changes to green "#f00"
 const incorrectAnswer = () => {
     document.getElementById(currentQuestion).style.backgroundColor = "#f00";
 }
 
+// event listeners for choice A B or C from the function call
 choiceA.addEventListener("click",checkAnswer);
 choiceB.addEventListener("click",checkAnswer);
 choiceC.addEventListener("click",checkAnswer);
 
 
 
-// score render
+// user Score
+//div element needs to be set
 const userScore =() => {
     scoreDiv.style.display = "block";
     
     // calculate the amount of question percent answered by the user
     const scorePerCent = Math.round(100 * score/questions.length);
     
-    // choose the image based on the scorePerCent
+    // choose the image based on the scorePerCent - using TERNARY if/else statement. 
     let img = (scorePerCent >= 80) ? "./images/5.png" :
               (scorePerCent >= 60) ? "./images/5.png" :
               (scorePerCent >= 40) ? "./images/5.png" :
