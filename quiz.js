@@ -166,7 +166,7 @@ const questionCounter = () => {
 // checkAnswer
 
 const checkAnswer = (answer) => {
-    if( answer === questions[currentQuestion].correct){
+    if (answer.target.id === questions[currentQuestion].correct){    
         // answer is correct
         score++;
         // change progress color to green
